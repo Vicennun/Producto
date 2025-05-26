@@ -44,19 +44,19 @@ public class ProductoService {
     }
 
     public List<Producto> findByPrecioMenorQue(Double precio) {
-        return ProductoRepository.findByPrecioMenorQue(precio);
+        return ProductoRepository.findByPrecioLessThan(precio);
     }
 
     public List<Producto> findByPrecioMayorQue(Double precio) {
-        return ProductoRepository.findByPrecioMayorQue(precio);
+        return ProductoRepository.findByPrecioGreaterThan(precio);
     }
 
     public List<Producto> findByStockMenorQue(Integer stock) {
-        return ProductoRepository.findByStockMenorQue(stock);
+        return ProductoRepository.findByStockLessThan(stock);
     }
 
     public List<Producto> findByStockMayorQue(Integer stock) {
-        return ProductoRepository.findByStockMayorQue(stock);
+        return ProductoRepository.findByStockGreaterThan(stock);
     }
 
 }
