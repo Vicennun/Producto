@@ -1,8 +1,8 @@
 package com.ECOMARKET.Producto.Controller;
 
+import com.ECOMARKET.Producto.Model.Categoria;
 import com.ECOMARKET.Producto.Model.Producto;
 import com.ECOMARKET.Producto.Service.ProductoService;
-import com.ECOMARKET.Producto.Model.Categoria;
 import com.ECOMARKET.Producto.Repository.CategoriaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
