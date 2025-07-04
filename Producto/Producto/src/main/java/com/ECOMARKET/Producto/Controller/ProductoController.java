@@ -2,6 +2,8 @@ package com.ECOMARKET.Producto.Controller;
 
 import com.ECOMARKET.Producto.Model.Producto;
 import com.ECOMARKET.Producto.Service.ProductoService;
+import com.ECOMARKET.Producto.Model.Categoria;
+import com.ECOMARKET.Producto.Repository.CategoriaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,9 @@ public class ProductoController {
 
     @Autowired
     private ProductoService productoService;
+
+    @Autowired
+    private CategoriaRepository categoriaRepository; // Debes crear este repositorio si no existe
 
     @GetMapping
     public ResponseEntity<List<Producto>> listar() {
@@ -63,8 +68,12 @@ public class ProductoController {
         return ResponseEntity.ok(productos);
     }
 
-    @GetMapping("/categoria/{categoria}")
-    public ResponseEntity<List<Producto>> buscarPorCategoria(@PathVariable String categoria) {
+    @GetMapping("/categoria/{categoriaId}")
+    public ResponseEntity<List<Producto>> buscarPorCategoria(@PathVariable Integer categoriaId) {
+        Categoria categoria = categoriaRepository.findById(categoriaId).orElse(null);
+        if (categoria == null) {
+            return ResponseEntity.notFound().build();
+        }
         List<Producto> productos = productoService.findByCategoria(categoria);
         if (productos.isEmpty()) {
             return ResponseEntity.noContent().build();

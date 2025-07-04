@@ -27,9 +27,6 @@ public class Producto {
     private String descripcion;
 
     @Column(nullable=false)  // Esta columna no puede ser nula.
-    private String categoria;
-
-    @Column(nullable=false)  // Esta columna no puede ser nula.
     private double precio;
 
     @Column(nullable=false)  // Esta columna no puede ser nula.
@@ -38,6 +35,9 @@ public class Producto {
     @Column(nullable=true)  // Esta columna puede ser nula.
     private String imagenUrl;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "categoria_id", nullable = false)
+    private Categoria categoria;
 }
 
 /*

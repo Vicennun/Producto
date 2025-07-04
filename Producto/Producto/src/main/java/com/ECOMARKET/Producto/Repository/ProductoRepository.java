@@ -1,6 +1,7 @@
 package com.ECOMARKET.Producto.Repository;
 
 import com.ECOMARKET.Producto.Model.Producto;
+import com.ECOMARKET.Producto.Model.Categoria;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
     List<Producto> findByNombre(String nombre);
     List<Producto> findByMarca(String marca);
-    List<Producto> findByCategoria(String categoria);
+    List<Producto> findByCategoria(Categoria categoria);
     List<Producto> findByPrecioLessThan(Double precio);
     List<Producto> findByPrecioGreaterThan(Double precio);
     List<Producto> findByStockLessThan(Integer stock);
