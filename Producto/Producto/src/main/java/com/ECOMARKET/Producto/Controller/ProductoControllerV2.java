@@ -32,7 +32,7 @@ public class ProductoControllerV2 {
     @Autowired
     private ProductoModelAssembler assembler;
 
-    @GetMapping(produces = MediaTypes.HAL_JSON_VALUE)
+    @GetMapping(produces = { MediaTypes.HAL_JSON_VALUE, "application/json" })
     @Operation(
         summary = "Listar todos los productos",
         description = "Obtiene una lista completa de todos los productos registrados en el sistema.",
@@ -56,7 +56,7 @@ public class ProductoControllerV2 {
                 linkTo(methodOn(ProductoControllerV2.class).getAllProductos()).withSelfRel());
     }
 
-    @GetMapping(value = "/{id}", produces = MediaTypes.HAL_JSON_VALUE)
+    @GetMapping(value = "/{id}", produces = { MediaTypes.HAL_JSON_VALUE, "application/json" })
     @Operation(
         summary = "Obtener producto por ID",
         description = "Devuelve los detalles de un producto específico según su identificador.",
@@ -80,7 +80,7 @@ public class ProductoControllerV2 {
         return assembler.toModel(producto);
     }
 
-    @PostMapping(produces = MediaTypes.HAL_JSON_VALUE)
+    @PostMapping(produces = { MediaTypes.HAL_JSON_VALUE, "application/json" })
     @Operation(
         summary = "Crear un nuevo producto",
         description = "Registra un nuevo producto en el sistema.",
@@ -106,7 +106,7 @@ public class ProductoControllerV2 {
                 .body(assembler.toModel(newProducto));
     }
 
-    @PutMapping(value = "/{id}", produces = MediaTypes.HAL_JSON_VALUE)
+    @PutMapping(value = "/{id}", produces = { MediaTypes.HAL_JSON_VALUE, "application/json" })
     @Operation(
         summary = "Actualizar producto",
         description = "Actualiza los detalles de un producto existente.",
@@ -133,7 +133,7 @@ public class ProductoControllerV2 {
                 .body(assembler.toModel(updatedProducto));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/{id}", produces = { MediaTypes.HAL_JSON_VALUE, "application/json" })
     @Operation(
         summary = "Eliminar producto",
         description = "Elimina un producto existente por su ID.",
@@ -157,7 +157,7 @@ public class ProductoControllerV2 {
         }
     }
 
-    @GetMapping("/nombre/{nombre}")
+    @GetMapping(value = "/nombre/{nombre}", produces = { MediaTypes.HAL_JSON_VALUE, "application/json" })
     @Operation(
         summary = "Listar productos por nombre",
         description = "Obtiene todos los productos que coinciden con el nombre proporcionado.",
@@ -181,7 +181,7 @@ public class ProductoControllerV2 {
                 linkTo(methodOn(ProductoControllerV2.class).getProductosByNombre(nombre)).withSelfRel());
     }
 
-    @GetMapping("/marca/{marca}")
+    @GetMapping(value = "/marca/{marca}", produces = { MediaTypes.HAL_JSON_VALUE, "application/json" })
     @Operation(
         summary = "Listar productos por marca",
         description = "Obtiene todos los productos de una marca específica.",
@@ -205,7 +205,7 @@ public class ProductoControllerV2 {
                 linkTo(methodOn(ProductoControllerV2.class).getProductosByMarca(marca)).withSelfRel());
     }
 
-    @GetMapping("/categoria/{categoriaId}")
+    @GetMapping(value = "/categoria/{categoriaId}", produces = { MediaTypes.HAL_JSON_VALUE, "application/json" })
     @Operation(
         summary = "Listar productos por categoría",
         description = "Obtiene todos los productos de una categoría específica.",
@@ -233,7 +233,7 @@ public class ProductoControllerV2 {
                 linkTo(methodOn(ProductoControllerV2.class).getProductosByCategoria(categoriaId)).withSelfRel());
     }
 
-    @GetMapping("/precio/menor-que/{precio}")
+    @GetMapping(value = "/precio/menor-que/{precio}", produces = { MediaTypes.HAL_JSON_VALUE, "application/json" })
     @Operation(
         summary = "Listar productos con precio menor que",
         description = "Obtiene todos los productos cuyo precio es menor al valor proporcionado.",
@@ -257,7 +257,7 @@ public class ProductoControllerV2 {
                 linkTo(methodOn(ProductoControllerV2.class).getProductosByPrecioMenor(precio)).withSelfRel());
     }
 
-    @GetMapping("/precio/mayor-que/{precio}")
+    @GetMapping(value = "/precio/mayor-que/{precio}", produces = { MediaTypes.HAL_JSON_VALUE, "application/json" })
     @Operation(
         summary = "Listar productos con precio mayor que",
         description = "Obtiene todos los productos cuyo precio es mayor al valor proporcionado.",
@@ -281,7 +281,7 @@ public class ProductoControllerV2 {
                 linkTo(methodOn(ProductoControllerV2.class).getProductosByPrecioMayor(precio)).withSelfRel());
     }
 
-    @GetMapping("/stock/menor-que/{stock}")
+    @GetMapping(value = "/stock/menor-que/{stock}", produces = { MediaTypes.HAL_JSON_VALUE, "application/json" })
     @Operation(
         summary = "Listar productos con stock menor que",
         description = "Obtiene todos los productos cuyo stock es menor al valor proporcionado.",
@@ -305,7 +305,7 @@ public class ProductoControllerV2 {
                 linkTo(methodOn(ProductoControllerV2.class).getProductosByStockMenor(stock)).withSelfRel());
     }
 
-    @GetMapping("/stock/mayor-que/{stock}")
+    @GetMapping(value = "/stock/mayor-que/{stock}", produces = { MediaTypes.HAL_JSON_VALUE, "application/json" })
     @Operation(
         summary = "Listar productos con stock mayor que",
         description = "Obtiene todos los productos cuyo stock es mayor al valor proporcionado.",
